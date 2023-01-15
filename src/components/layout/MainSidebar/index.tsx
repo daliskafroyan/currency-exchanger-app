@@ -1,15 +1,6 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 import { useState } from 'react';
-import {
-  createStyles,
-  Navbar,
-  Group,
-  Text,
-  RingProgress,
-  Stack,
-  Paper,
-} from '@mantine/core';
-import Link from 'next/link';
+import { createStyles, Navbar, Group, Text, RingProgress, Stack } from '@mantine/core';
 import TransactionIcon from '@/public/transaction.svg';
 import CardsIcon from '@/public/cards.svg';
 import DepositMoneyIcon from '@/public/deposit.svg';
@@ -27,18 +18,14 @@ const useStyles = createStyles((theme, _params, getRef) => {
     },
 
     version: {
-      backgroundColor: theme.fn.lighten(
-        theme.fn.variant({ variant: `filled`, color: theme.primaryColor })
-          .background!,
-        0.1,
-      ),
+      backgroundColor: theme.fn.lighten(theme.fn.variant({ variant: `filled`, color: theme.primaryColor }).background!, 0.1),
       color: theme.white,
       fontWeight: 700,
     },
 
     header: {
       padding: theme.spacing.md,
-      background: '#2A2E94'
+      background: '#2A2E94',
     },
 
     link: {
@@ -54,11 +41,7 @@ const useStyles = createStyles((theme, _params, getRef) => {
       fontWeight: 500,
 
       '&:hover': {
-        backgroundColor: theme.fn.lighten(
-          theme.fn.variant({ variant: `filled`, color: theme.primaryColor })
-            .background!,
-          0.1,
-        ),
+        backgroundColor: theme.fn.lighten(theme.fn.variant({ variant: `filled`, color: theme.primaryColor }).background!, 0.1),
       },
     },
 
@@ -71,11 +54,7 @@ const useStyles = createStyles((theme, _params, getRef) => {
 
     linkActive: {
       '&, &:hover': {
-        backgroundColor: theme.fn.lighten(
-          theme.fn.variant({ variant: `filled`, color: theme.primaryColor })
-            .background!,
-          0.15,
-        ),
+        backgroundColor: theme.fn.lighten(theme.fn.variant({ variant: `filled`, color: theme.primaryColor }).background!, 0.15),
         [`& .${icon}`]: {
           opacity: 0.9,
         },
@@ -119,25 +98,20 @@ export function MainSidebar() {
       <Navbar.Section grow>
         <Group className={classes.header} position="apart">
           <Group spacing={'sm'}>
-            <RingProgress
-              thickness={4}
-              size={48}
-              sections={[{ value: 50, color: '#2AF5D6' }]}
-            />
+            <RingProgress thickness={4} size={48} sections={[{ value: 50, color: '#2AF5D6' }]} />
             <Stack align="flex-start" justify="flex-start" spacing={0}>
-              <Text color={'white'} size={10}>STEP 02</Text>
+              <Text color={'white'} size={10}>
+                STEP 02
+              </Text>
               <Text fw={800} size={12} color={'white'}>
                 Specify Amount
               </Text>
             </Stack>
           </Group>
-          <IconChevronDown color='#2AF5D6' />
+          <IconChevronDown color="#2AF5D6" />
         </Group>
-        <div style={{ padding: '16px' }}>
-          {links}
-        </div>
-
+        <div style={{ padding: '16px' }}>{links}</div>
       </Navbar.Section>
-    </Navbar >
+    </Navbar>
   );
 }

@@ -1,9 +1,9 @@
-import { ThemeIcon, Text, Avatar, Timeline, createStyles, Loader } from '@mantine/core';
-import { IconArrowsRightLeft, IconMathXMinusX, IconMinus, IconSun, IconVideo } from '@tabler/icons';
+import { Text, Timeline, Loader } from '@mantine/core';
+import { IconArrowsRightLeft, IconMinus } from '@tabler/icons';
 import styled from '@emotion/styled';
 
 const FirstVerticalLine = styled.div`
-    position: relative;
+  position: relative;
 
   &::before {
     box-sizing: border-box;
@@ -12,13 +12,13 @@ const FirstVerticalLine = styled.div`
     right: auto;
     bottom: -24px;
     border-left: 4px solid #dee2e6;
-    content: "";
+    content: '';
     height: 62px;
   }
 `;
 
 const LastVerticalLine = styled.div`
-    position: relative;
+  position: relative;
 
   &::before {
     box-sizing: border-box;
@@ -29,11 +29,11 @@ const LastVerticalLine = styled.div`
     bottom: -24px;
     border-left: 4px solid #dee2e6;
     height: 138px;
-    content: "";
+    content: '';
   }
 `;
 
-export default function FeeTimeline({ fee, exchangeRate, loading, currency }: { fee: number, exchangeRate: number, loading: boolean, currency: string }) {
+export default function FeeTimeline({ fee, exchangeRate, loading, currency }: { fee: number; exchangeRate: number; loading: boolean; currency: string }) {
   return (
     <div
       style={{
@@ -41,7 +41,7 @@ export default function FeeTimeline({ fee, exchangeRate, loading, currency }: { 
         margin: 'auto',
         background: '#EDF6FF',
         padding: '14px',
-        paddingBottom: '28px'
+        paddingBottom: '28px',
       }}
     >
       <Timeline>
@@ -49,22 +49,22 @@ export default function FeeTimeline({ fee, exchangeRate, loading, currency }: { 
         <LastVerticalLine />
 
         <Timeline.Item title="Fees" bulletSize={24} bullet={<IconMinus size={14} />}>
-          {
-            loading ?
-              <Loader variant="dots" /> :
-              <Text color="dimmed" size="sm">
-                {fee}
-              </Text>
-          }
+          {loading ? (
+            <Loader variant="dots" />
+          ) : (
+            <Text color="dimmed" size="sm">
+              {fee}
+            </Text>
+          )}
         </Timeline.Item>
         <Timeline.Item title="Exchange Rate" bulletSize={24} bullet={<IconArrowsRightLeft size={14} />}>
-          {
-            loading ?
-              <Loader variant="dots" /> :
-              <Text color="dimmed" size="sm">
-                {exchangeRate} {currency}
-              </Text>
-          }
+          {loading ? (
+            <Loader variant="dots" />
+          ) : (
+            <Text color="dimmed" size="sm">
+              {exchangeRate} {currency}
+            </Text>
+          )}
         </Timeline.Item>
       </Timeline>
     </div>

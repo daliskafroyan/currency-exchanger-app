@@ -26,7 +26,7 @@ interface CurrencyExchangerState {
   senderCurrency: keyof typeof currencyExchangerValue;
   receiverCurrency: keyof typeof currencyExchangerValue;
   fee: number;
-  isLoading: boolean
+  isLoading: boolean;
 }
 
 export default function Home() {
@@ -77,7 +77,6 @@ export default function Home() {
         newEvent.receiverCurrencyValue = undefined;
       }
 
-
       return newEvent;
     },
     {
@@ -88,35 +87,30 @@ export default function Home() {
       senderCurrency: 'USD',
       receiverCurrency: 'USD',
       fee: 0,
-      isLoading: false
+      isLoading: false,
     },
   );
 
   const { start } = useTimeout(() => updateEvent({ isLoading: false }), 1000);
 
-  useEffect(start, [event])
+  useEffect(start, [event, start]);
 
   const handleProceedConfirm = () => {
-    if (event.senderCurrencyValue)
-      updateEvent({ credit: event.credit - event.senderCurrencyValue })
+    if (event.senderCurrencyValue) updateEvent({ credit: event.credit - event.senderCurrencyValue });
     showNotification({
       title: 'Success!',
       message: 'Your money has been sent',
-    })
-  }
+    });
+  };
 
   const handleClickConfirm = () => {
     openConfirmModal({
       title: 'Please confirm your action',
-      children: (
-        <Text size="sm">
-          Are you sure you want to send the money?
-        </Text>
-      ),
+      children: <Text size="sm">Are you sure you want to send the money?</Text>,
       labels: { confirm: 'Confirm', cancel: 'Cancel' },
       onConfirm: () => handleProceedConfirm(),
-    })
-  }
+    });
+  };
 
   return (
     <>
@@ -128,7 +122,9 @@ export default function Home() {
       <Paper m={80}>
         <Paper shadow="sm" p="sm">
           <Text fw={500}>Credit</Text>
-          <Text size={40} fw={600}>$ {event.credit}</Text>
+          <Text size={40} fw={600}>
+            $ {event.credit}
+          </Text>
         </Paper>
         <Paper shadow="md" p="md" mt="md">
           <CurrencyInput
