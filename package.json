@@ -3,6 +3,7 @@
   "description": "A simple currency exchanger app",
   "version": "1.0.0",
   "private": true,
+  "homepage": "https://daliskafroyan.github.io/currency-exchanger-app",
   "author": "Firsta Royan Daliska",
   "license": "MIT",
   "keywords": [
@@ -17,7 +18,9 @@
     "type-check": "tsc --noEmit",
     "lint": "eslint --ignore-path .gitignore \"src/**/*.+(ts|js|tsx)\"",
     "format": "prettier --ignore-path .gitignore \"src/**/*.+(ts|js|tsx)\" --write",
-    "postinstall": "husky install"
+    "postinstall": "husky install",
+    "predeploy": "pnpm run build",
+    "deploy": "gh-pages -d build"
   },
   "lint-staged": {
     "./src/**/*.{ts,js,jsx,tsx}": [
@@ -50,6 +53,7 @@
     "@types/node": "18.11.17",
     "@types/react": "18.0.26",
     "@types/react-dom": "18.0.9",
+    "gh-pages": "4.0.0",
     "@typescript-eslint/eslint-plugin": "5.47.0",
     "@typescript-eslint/parser": "5.47.0",
     "eslint": "8.30.0",
